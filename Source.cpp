@@ -245,7 +245,7 @@ void LuciferCipher::decryptBlock(uint8_t_union* block, uint8_t* p_box, uint8_t* 
 *
 * @param text Encrypted text
 * @param key The key for decryption
-* @param numRounds Number of rounds of decryption
+* @param numRounds Number of rounds of decryptionsssss
 *
 * @return The decrypted message
 */
