@@ -61,7 +61,7 @@ uint8_t LuciferCipher::hexCharToDecimal(char hexChar)
         return hexChar - 'a' + 10;
     }
     else {
-        // Некорректный символ
+        // ГЌГҐГЄГ®Г°Г°ГҐГЄГІГ­Г»Г© Г±ГЁГ¬ГўГ®Г«
         return 255;
     }
 }
@@ -129,7 +129,7 @@ void LuciferCipher::permuteBits(uint8_t_union* block, uint8_t* p_box)
 /**
 * @brief Bit block replacement function
 *
-* @param block A block of bits
+* @param block A block of bits g
 * @param s_box Substitution block 
 */
 void LuciferCipher::transformSBits(uint8_t_union* block, uint8_t* s_box)
@@ -160,7 +160,7 @@ void LuciferCipher::encryptBlock(uint8_t_union* block, uint8_t* p_box, uint8_t* 
 
     transformSBits(block, s_box);
 
-    // Применение перестановки битов
+    // ГЏГ°ГЁГ¬ГҐГ­ГҐГ­ГЁГҐ ГЇГҐГ°ГҐГ±ГІГ Г­Г®ГўГЄГЁ ГЎГЁГІГ®Гў
     permuteBits(block, p_box);
 }
 
@@ -175,13 +175,13 @@ void LuciferCipher::encryptBlock(uint8_t_union* block, uint8_t* p_box, uint8_t* 
 */
 string LuciferCipher::encrypt(const string& text, const string& key, unsigned int numRounds)
 {
-    // Проверка корректности длины ключа
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГЁ Г¤Г«ГЁГ­Г» ГЄГ«ГѕГ·Г 
     if (key.size() != 32) {
         cout << "Miscusi: Key size is not 128 bit!\n";
         return "";
     }
 
-    // Проверка корректности формата ключа
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГЁ ГґГ®Г°Г¬Г ГІГ  ГЄГ«ГѕГ·Г 
     for (char hexChar : key) {
         if (!isxdigit(hexChar)) {
             cout << "Miscusi: Key is not in hex format!\n";
@@ -225,7 +225,7 @@ string LuciferCipher::encrypt(const string& text, const string& key, unsigned in
 
 void LuciferCipher::decryptBlock(uint8_t_union* block, uint8_t* p_box, uint8_t* s_box, uint8_t roundKeys[16][8], unsigned int round)
 {
-    // Обратная перестановка битов
+    // ГЋГЎГ°Г ГІГ­Г Гї ГЇГҐГ°ГҐГ±ГІГ Г­Г®ГўГЄГ  ГЎГЁГІГ®Гў
     for (unsigned int i = 0; i < 128; ++i) {
         p_box_reverse[p_box[i]] = i;
     }
@@ -251,19 +251,19 @@ void LuciferCipher::decryptBlock(uint8_t_union* block, uint8_t* p_box, uint8_t* 
 */
 string LuciferCipher::decrypt(const string& text, const string& key, unsigned int numRounds)
 {
-    // Проверка корректности длины текста
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГЁ Г¤Г«ГЁГ­Г» ГІГҐГЄГ±ГІГ 
     if (text.size() % 32 != 0) {
         cout << "Miscusi: Text length is not a multiple of 16 bytes!\n";
         return "";
     }
 
-    // Проверка корректности длины ключа
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГЁ Г¤Г«ГЁГ­Г» ГЄГ«ГѕГ·Г 
     if (key.size() != 32) {
         cout << "Miscusi: Key size is not 128 bit!\n";
         return "";
     }
 
-    // Проверка корректности формата ключа
+    // ГЏГ°Г®ГўГҐГ°ГЄГ  ГЄГ®Г°Г°ГҐГЄГІГ­Г®Г±ГІГЁ ГґГ®Г°Г¬Г ГІГ  ГЄГ«ГѕГ·Г 
     for (char hexChar : key) {
         if (!isxdigit(hexChar)) {
             cout << "Miscusi: Key is not in hex format!\n";
